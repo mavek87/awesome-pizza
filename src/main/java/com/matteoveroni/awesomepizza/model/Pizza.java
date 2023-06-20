@@ -1,5 +1,6 @@
 package com.matteoveroni.awesomepizza.model;
 
+import com.matteoveroni.awesomepizza.model.OrderItem;
 import jakarta.persistence.*;
 import lombok.*;
 

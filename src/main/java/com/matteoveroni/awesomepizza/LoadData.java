@@ -4,18 +4,18 @@ import com.matteoveroni.awesomepizza.factories.PizzaFactory;
 import com.matteoveroni.awesomepizza.model.Order;
 import com.matteoveroni.awesomepizza.model.OrderItem;
 import com.matteoveroni.awesomepizza.model.OrderState;
+import com.matteoveroni.awesomepizza.model.Pizza;
 import com.matteoveroni.awesomepizza.model.PizzaName;
-import com.matteoveroni.awesomepizza.repositories.OrderItemsRepository;
 import com.matteoveroni.awesomepizza.repositories.OrdersRepository;
 import com.matteoveroni.awesomepizza.services.OrdersService;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.Date;
-import java.util.List;
 
 @Configuration
 public class LoadData {
@@ -32,23 +32,38 @@ public class LoadData {
 //    }
 
     @Bean
-    CommandLineRunner initDatabase(OrdersRepository ordersRepository, OrderItemsRepository orderItemsRepository, OrdersService ordersService) {
+    CommandLineRunner initDatabase(OrdersRepository ordersRepository, OrdersService ordersService) {
 
         return args -> {
+
+            Pizza pizzaMargherita = PizzaFactory.createPizza(PizzaName.MARGHERITA);
+            Pizza pizzaCapricciosa = PizzaFactory.createPizza(PizzaName.CAPRICCIOSA);
+
             OrderItem item1Order1 = OrderItem.builder()
-                    .pizza(PizzaFactory.createPizza(PizzaName.MARGHERITA))
+                    .pizza(pizzaMargherita)
                     .amountOfPizza(3)
                     .build();
 
-//            orderItemsRepository.save(item1Order1);
+            OrderItem item2Order1 = OrderItem.builder()
+                    .pizza(pizzaCapricciosa)
+                    .amountOfPizza(1)
+                    .build();
+
+            OrderItem item3Order1 = OrderItem.builder()
+                    .pizza(pizzaMargherita)
+                    .amountOfPizza(1)
+                    .build();
 
             Order order1 = Order.builder()
                     .date(new Date())
                     .orderState(OrderState.TO_PREPARE)
-                    .orderItems(List.of(item1Order1))
+                    .orderItems(List.of(item1Order1, item2Order1, item3Order1))
                     .build();
 
             ordersRepository.save(order1);
+
+
+            Optional<Order> orderState = ordersRepository.findOrderState(OrderState.IN_PREPARATION);
 //
 //
 //            List<Order> all = ordersRepository.findAll();

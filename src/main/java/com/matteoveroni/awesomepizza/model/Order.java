@@ -1,5 +1,6 @@
 package com.matteoveroni.awesomepizza.model;
 
+import com.matteoveroni.awesomepizza.model.converters.OrderStateEnumConverter;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,7 +27,9 @@ public class Order {
             inverseJoinColumns = @JoinColumn( name="order_item_id")
     )
     private List<OrderItem> orderItems;
-    @Enumerated(EnumType.STRING) private OrderState orderState;
+    @Column(name="order_state")
+    @Convert(converter = OrderStateEnumConverter.class)
+    private OrderState orderState;
     private Date date = new Date();
     private String notes = "";
 }
