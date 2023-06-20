@@ -1,13 +1,6 @@
 package com.matteoveroni.awesomepizza.services;
 
-import com.matteoveroni.awesomepizza.model.Order;
-import com.matteoveroni.awesomepizza.model.OrderState;
-import com.matteoveroni.awesomepizza.repositories.OrdersRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class OrdersService {

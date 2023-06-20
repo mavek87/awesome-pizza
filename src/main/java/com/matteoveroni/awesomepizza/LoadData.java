@@ -7,17 +7,15 @@ import com.matteoveroni.awesomepizza.model.OrderState;
 import com.matteoveroni.awesomepizza.model.PizzaName;
 import com.matteoveroni.awesomepizza.repositories.OrderItemsRepository;
 import com.matteoveroni.awesomepizza.repositories.OrdersRepository;
-
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-
 import com.matteoveroni.awesomepizza.services.OrdersService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Date;
+import java.util.List;
 
 @Configuration
 public class LoadData {
