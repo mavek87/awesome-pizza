@@ -4,6 +4,7 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public enum OrderState {
-    TO_FULFILL,
+    TO_PREPARE,
+    IN_PREPARATION,
     READY
 }

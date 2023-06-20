@@ -6,20 +6,18 @@ import com.matteoveroni.awesomepizza.model.OrderItem;
 import com.matteoveroni.awesomepizza.model.OrderState;
 import com.matteoveroni.awesomepizza.model.PizzaName;
 import com.matteoveroni.awesomepizza.repositories.OrderItemsRepository;
-import com.matteoveroni.awesomepizza.repositories.OrderRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import com.matteoveroni.awesomepizza.repositories.OrdersRepository;
+
 import java.util.Date;
 import java.util.List;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import java.util.Optional;
+
+import com.matteoveroni.awesomepizza.services.OrdersService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.plugin.core.OrderAwarePluginRegistry;
 
 @Configuration
 public class LoadData {
@@ -36,7 +34,7 @@ public class LoadData {
 //    }
 
     @Bean
-    CommandLineRunner initDatabase(OrderRepository orderRepository, OrderItemsRepository orderItemsRepository) {
+    CommandLineRunner initDatabase(OrdersRepository ordersRepository, OrderItemsRepository orderItemsRepository, OrdersService ordersService) {
 
         return args -> {
 //            Session session = getCurrentSessionFromJPA().openSession();
@@ -51,14 +49,14 @@ public class LoadData {
 
             Order order1 = Order.builder()
                     .date(new Date())
-                    .orderState(OrderState.TO_FULFILL)
+                    .orderState(OrderState.TO_PREPARE)
                     .orderItems(List.of(item1Order1))
                     .build();
 //
-            orderRepository.save(order1);
+            ordersRepository.save(order1);
 
 
-            List<Order> all = orderRepository.findAll();
+            List<Order> all = ordersRepository.findAll();
 
 
 //            session.getTransaction().commit();
@@ -69,6 +67,14 @@ public class LoadData {
 
 //            log.info("Preloading " + ordersRepository.save(new Employee("Bilbo Baggins", "burglar")));
 //            log.info("Preloading " + ordersRepository.save(new Employee("Frodo Baggins", "thief")));
+
+
+//            Optional<Order> nextOrder1 = ordersService.getNextOrder();
+//            log.info("nextOrder1: {}", nextOrder1);
+//
+//            Optional<Order> nextOrder2 = ordersService.getNextOrder();
+//            log.info("nextOrder2: {}", nextOrder2);
+
         };
     }
 }
