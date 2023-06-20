@@ -15,4 +15,7 @@ public interface OrdersRepository extends JpaRepository<Order, Long> {
     @Query(value = "SELECT o FROM Order o WHERE o.orderState = ?1")
     Optional<Order> findOrderState(OrderState orderState);
 
+    @Query(value = "SELECT o FROM Order o WHERE o.orderState=1 ORDER BY o.date ASC LIMIT 1")
+    Optional<Order> findNextOrderToProcess();
+
 }

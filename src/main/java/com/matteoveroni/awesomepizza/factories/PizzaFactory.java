@@ -2,11 +2,10 @@ package com.matteoveroni.awesomepizza.factories;
 
 import com.matteoveroni.awesomepizza.model.Pizza;
 import com.matteoveroni.awesomepizza.model.PizzaName;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
-
 import java.math.BigDecimal;
 import java.util.Objects;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @Component
 @NoArgsConstructor

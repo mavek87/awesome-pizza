@@ -60,10 +60,24 @@ public class LoadData {
                     .orderItems(List.of(item1Order1, item2Order1, item3Order1))
                     .build();
 
-            ordersRepository.save(order1);
+            OrderItem item1Order2 = OrderItem.builder()
+                    .pizza(pizzaMargherita)
+                    .amountOfPizza(1)
+                    .build();
 
+            Thread.sleep(200);
 
-            Optional<Order> orderState = ordersRepository.findOrderState(OrderState.IN_PREPARATION);
+            Order order2 = Order.builder()
+                    .date(new Date())
+                    .orderState(OrderState.TO_PREPARE)
+                    .orderItems(List.of(item1Order2))
+                    .build();
+
+            ordersRepository.saveAll(List.of(order1, order2));
+
+            Optional<Order> nextOrderToProcess = ordersRepository.findNextOrderToProcess();
+            nextOrderToProcess.ifPresent(order -> log.info("order id: {}, date: {}", order.getId(), order.getDate()));
+
 //
 //
 //            List<Order> all = ordersRepository.findAll();
