@@ -32,9 +32,9 @@ public class Pizza {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-    private String name;
-    private String description;
-    private BigDecimal price;
+    private String name = "";
+    private String description = "";
+    private BigDecimal price = new BigDecimal("0.0");
     @OneToMany(mappedBy = "pizza")
     private List<OrderItem> orderItems;
 

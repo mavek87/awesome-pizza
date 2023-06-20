@@ -41,6 +41,6 @@ public class Order {
     )
     private List<OrderItem> orderItems;
     @Enumerated(EnumType.STRING) private OrderState orderState;
-    private Date date;
-    private String notes;
+    private Date date = new Date();
+    private String notes = "";
 }

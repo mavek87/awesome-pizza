@@ -37,33 +37,27 @@ public class LoadData {
     CommandLineRunner initDatabase(OrdersRepository ordersRepository, OrderItemsRepository orderItemsRepository, OrdersService ordersService) {
 
         return args -> {
-//            Session session = getCurrentSessionFromJPA().openSession();
-//            session.beginTransaction();
-
-            OrderItem item1Order1 = OrderItem.builder()
-                    .pizza(PizzaFactory.createPizza(PizzaName.MARGHERITA))
-                    .amountOfPizza(3)
-                    .build();
-
-            orderItemsRepository.save(item1Order1);
-
-            Order order1 = Order.builder()
-                    .date(new Date())
-                    .orderState(OrderState.TO_PREPARE)
-                    .orderItems(List.of(item1Order1))
-                    .build();
+//            OrderItem item1Order1 = OrderItem.builder()
+//                    .pizza(PizzaFactory.createPizza(PizzaName.MARGHERITA))
+//                    .amountOfPizza(3)
+//                    .build();
 //
-            ordersRepository.save(order1);
-
-
-            List<Order> all = ordersRepository.findAll();
-
-
-//            session.getTransaction().commit();
-//            session.close();
-
-
-            log.info("all => " + all);
+//            orderItemsRepository.save(item1Order1);
+//
+//            Order order1 = Order.builder()
+//                    .date(new Date())
+//                    .orderState(OrderState.TO_PREPARE)
+//                    .orderItems(List.of(item1Order1))
+//                    .build();
+////
+//            ordersRepository.save(order1);
+//
+//
+//            List<Order> all = ordersRepository.findAll();
+//
+//
+//
+//            log.info("all => " + all);
 
 //            log.info("Preloading " + ordersRepository.save(new Employee("Bilbo Baggins", "burglar")));
 //            log.info("Preloading " + ordersRepository.save(new Employee("Frodo Baggins", "thief")));
