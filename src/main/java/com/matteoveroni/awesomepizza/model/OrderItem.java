@@ -38,8 +38,9 @@ public class OrderItem {
     @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "pizza_id", referencedColumnName = "id")
     private Pizza pizza;
-//    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+//    @ManyToOne
 //    @JoinColumn(name = "order_id", referencedColumnName = "id")
+//    @JoinColumn(name = "order_id", referencedColumnName = "id", nullable = false)
 //    private Order order;
     private Integer amountOfPizza = 0;
 }

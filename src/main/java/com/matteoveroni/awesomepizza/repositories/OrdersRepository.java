@@ -1,11 +1,7 @@
 package com.matteoveroni.awesomepizza.repositories;
 
 import com.matteoveroni.awesomepizza.model.Order;
-import com.matteoveroni.awesomepizza.model.OrderState;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-
-import java.util.Optional;
 
 public interface OrdersRepository extends JpaRepository<Order, Long> {
 

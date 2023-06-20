@@ -37,20 +37,20 @@ public class LoadData {
     CommandLineRunner initDatabase(OrdersRepository ordersRepository, OrderItemsRepository orderItemsRepository, OrdersService ordersService) {
 
         return args -> {
-//            OrderItem item1Order1 = OrderItem.builder()
-//                    .pizza(PizzaFactory.createPizza(PizzaName.MARGHERITA))
-//                    .amountOfPizza(3)
-//                    .build();
-//
+            OrderItem item1Order1 = OrderItem.builder()
+                    .pizza(PizzaFactory.createPizza(PizzaName.MARGHERITA))
+                    .amountOfPizza(3)
+                    .build();
+
 //            orderItemsRepository.save(item1Order1);
-//
-//            Order order1 = Order.builder()
-//                    .date(new Date())
-//                    .orderState(OrderState.TO_PREPARE)
-//                    .orderItems(List.of(item1Order1))
-//                    .build();
-////
-//            ordersRepository.save(order1);
+
+            Order order1 = Order.builder()
+                    .date(new Date())
+                    .orderState(OrderState.TO_PREPARE)
+                    .orderItems(List.of(item1Order1))
+                    .build();
+
+            ordersRepository.save(order1);
 //
 //
 //            List<Order> all = ordersRepository.findAll();
