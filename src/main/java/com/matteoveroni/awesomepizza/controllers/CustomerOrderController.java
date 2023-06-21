@@ -4,8 +4,8 @@ import com.matteoveroni.awesomepizza.exceptions.MalformedOrderException;
 import com.matteoveroni.awesomepizza.model.Order;
 import com.matteoveroni.awesomepizza.model.adapters.OrderAdapter;
 import com.matteoveroni.awesomepizza.model.dto.OrderDTO;
+import com.matteoveroni.awesomepizza.model.enums.OrderState;
 import com.matteoveroni.awesomepizza.services.OrdersService;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -20,22 +20,17 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping(value = "/api/orders")
+@RequestMapping(value = "/api/customer/order")
 @AllArgsConstructor
 @Slf4j
-public class OrderController {
+public class CustomerOrderController {
 
     private final OrdersService ordersService;
     private final OrderAdapter orderAdapter;
 
-    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<OrderDTO> getOrders() {
-        return ordersService.getAllOrders();
-    }
-
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<OrderDTO> getOrder(@PathVariable Long id) {
-        return ResponseEntity.of(ordersService.getOrder(id));
+    public ResponseEntity<OrderState> getOrderState(@PathVariable Long id) {
+        return ResponseEntity.of(ordersService.getOrderState(id));
     }
 
     @PostMapping(

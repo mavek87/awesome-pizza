@@ -31,6 +31,12 @@ public class OrdersService {
                 .map(orderAdapter::adaptToDTO);
     }
 
+    public Optional<OrderState> getOrderState(Long id) {
+        return ordersRepository
+                .findById(id)
+                .map(Order::getOrderState);
+    }
+
     public Long registerNewOrder(Order order) {
         order.setId(null);
         order.setDate(new Date());
@@ -48,7 +54,7 @@ public class OrdersService {
         return nextOrderToProcess.map(orderAdapter::adaptToDTO);
     }
 
-    public Optional<OrderDTO> evadeOrder(Long orderId) {
+    public Optional<OrderDTO> completeOrder(Long orderId) {
         Optional<Order> orderToEvade = ordersRepository.findById(orderId);
         orderToEvade.ifPresent(order -> order.setOrderState(OrderState.READY));
         return orderToEvade.map(orderAdapter::adaptToDTO);
