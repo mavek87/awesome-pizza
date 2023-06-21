@@ -13,12 +13,12 @@ public class PizzaFactory {
 
     static final String UNKNOWN_PIZZA_EX_MESSAGE = "Unknown pizza type passed!";
 
-    public static Pizza createPizza(PizzaName pizzaName) {
+    public Pizza createPizza(PizzaName pizzaName) {
         Objects.requireNonNull(pizzaName, "The pizza name cannot be null!");
-        return createPizza(pizzaName.getName());
+        return createPizza(pizzaName.name());
     }
 
-    public static Pizza createPizza(String pizzaName) {
+    public Pizza createPizza(String pizzaName) {
         Objects.requireNonNull(pizzaName, "The pizza name cannot be null!");
         String type = pizzaName.trim().toLowerCase();
         return switch (type) {
@@ -28,17 +28,17 @@ public class PizzaFactory {
         };
     }
 
-    private static Pizza createPizzaMargherita() {
+    private Pizza createPizzaMargherita() {
         return Pizza.builder()
-                .name(PizzaName.MARGHERITA.getName())
+                .name(PizzaName.MARGHERITA.name())
                 .description("Pizza con pomodoro basilico e mozzarella")
                 .price(new BigDecimal("7.0"))
                 .build();
     }
 
-    private static Pizza createPizzaCapricciosa() {
+    private Pizza createPizzaCapricciosa() {
         return Pizza.builder()
-                .name(PizzaName.CAPRICCIOSA.getName())
+                .name(PizzaName.CAPRICCIOSA.name())
                 .description("Pizza con pomodoro, funghi, carciofini, prosciutto cotto e olive")
                 .price(new BigDecimal("10.0"))
                 .build();

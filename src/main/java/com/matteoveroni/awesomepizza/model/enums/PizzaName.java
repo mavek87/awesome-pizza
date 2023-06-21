@@ -7,9 +7,8 @@ import lombok.Getter;
 @Getter
 public enum PizzaName {
 
-    MARGHERITA(1, "Pizza margherita"),
-    CAPRICCIOSA(2, "Pizza capricciosa");
+    MARGHERITA(1),
+    CAPRICCIOSA(2);
 
     private final int code;
-    private final String name;
 }
