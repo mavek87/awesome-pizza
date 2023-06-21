@@ -14,8 +14,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class OrdersServiceTest {
@@ -60,10 +59,28 @@ class OrdersServiceTest {
     }
 
     @Test
-    public void get_next_order_to_prepare_calls_orders_repository_find_next_order_to_process() {
+    public void get_next_order_to_prepare_is_ok() {
+        final Order mockOrderToPrepare = Order.builder()
+                .id(1L)
+                .date(new Date())
+                .build();
+        when(ordersRepository.findNextOrderToProcess()).thenReturn(Optional.of(mockOrderToPrepare));
+
+        Optional<Order> orderToPrepare = ordersService.getNextOrderToPrepare();
+
+        verify(ordersRepository).findNextOrderToProcess();
+        verify(ordersRepository).save(any(Order.class));
+        assertEquals(mockOrderToPrepare, orderToPrepare.get(), "Error, the order to prepare is different from expectations");
+    }
+
+    @Test
+    public void get_next_order_to_prepare_with_any_other_orders_left_is_ok() {
+        when(ordersRepository.findNextOrderToProcess()).thenReturn(Optional.empty());
+
         ordersService.getNextOrderToPrepare();
 
         verify(ordersRepository).findNextOrderToProcess();
+        verify(ordersRepository, never()).save(any(Order.class));
     }
 
     @Test
