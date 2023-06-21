@@ -56,7 +56,7 @@ public class LoadData {
 
             Order order1 = Order.builder()
                     .date(new Date())
-                    .orderState(OrderState.TO_PREPARE)
+                    .orderState(OrderState.TO_BE_PREPARED)
                     .orderItems(List.of(item1Order1, item2Order1, item3Order1))
                     .build();
 
@@ -69,7 +69,7 @@ public class LoadData {
 
             Order order2 = Order.builder()
                     .date(new Date())
-                    .orderState(OrderState.TO_PREPARE)
+                    .orderState(OrderState.TO_BE_PREPARED)
                     .orderItems(List.of(item1Order2))
                     .build();
 

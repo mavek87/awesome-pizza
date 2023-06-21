@@ -6,7 +6,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum OrderState {
-    TO_PREPARE(1),
+    TO_BE_PREPARED(1),
     IN_PREPARATION(2),
     READY(3);
 

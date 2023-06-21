@@ -8,7 +8,7 @@ public class OrderStateEnumConverter implements AttributeConverter<OrderState, I
     @Override
     public Integer convertToDatabaseColumn(OrderState orderState) {
         return switch (orderState) {
-            case TO_PREPARE -> OrderState.TO_PREPARE.getCode();
+            case TO_BE_PREPARED -> OrderState.TO_BE_PREPARED.getCode();
             case IN_PREPARATION -> OrderState.IN_PREPARATION.getCode();
             case READY -> OrderState.READY.getCode();
         };
@@ -16,8 +16,8 @@ public class OrderStateEnumConverter implements AttributeConverter<OrderState, I
 
     @Override
     public OrderState convertToEntityAttribute(Integer orderStateCode) {
-        if (OrderState.TO_PREPARE.getCode().equals(orderStateCode)) {
-            return OrderState.TO_PREPARE;
+        if (OrderState.TO_BE_PREPARED.getCode().equals(orderStateCode)) {
+            return OrderState.TO_BE_PREPARED;
         } else if (OrderState.IN_PREPARATION.getCode().equals(orderStateCode)) {
             return OrderState.IN_PREPARATION;
         } else if (OrderState.READY.getCode().equals(orderStateCode)) {
