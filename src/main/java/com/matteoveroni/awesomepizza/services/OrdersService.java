@@ -43,7 +43,9 @@ public class OrdersService {
         return nextOrderToProcess;
     }
 
-    public void evadeOrder(Long orderId) {
-        ordersRepository.findById(orderId).ifPresent(order -> order.setOrderState(OrderState.READY));
+    public Optional<Order> evadeOrder(Long orderId) {
+        Optional<Order> orderToEvade = ordersRepository.findById(orderId);
+        orderToEvade.ifPresent(order -> order.setOrderState(OrderState.READY));
+        return orderToEvade;
     }
 }
