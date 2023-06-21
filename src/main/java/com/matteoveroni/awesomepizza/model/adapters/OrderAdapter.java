@@ -14,7 +14,7 @@ public class OrderAdapter {
 
     private final OrderItemAdapter orderItemAdapter;
 
-    public OrderDTO mapToOrderDTO(Order order) {
+    public OrderDTO adapt(Order order) {
         List<OrderItemDTO> orderItemDTOList = order.getOrderItems().stream()
                 .map(orderItemAdapter::adapt)
                 .collect(Collectors.toList());

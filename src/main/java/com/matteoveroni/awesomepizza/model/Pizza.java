@@ -32,6 +32,6 @@ public class Pizza {
     @Builder.Default private String name = "";
     @Builder.Default private String description = "";
     @Builder.Default private BigDecimal price = new BigDecimal("0.0");
-    @OneToMany(mappedBy = "pizza", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "pizza")
     private List<OrderItem> orderItems;
 }

@@ -6,6 +6,7 @@ import com.matteoveroni.awesomepizza.model.OrderItem;
 import com.matteoveroni.awesomepizza.model.OrderState;
 import com.matteoveroni.awesomepizza.model.Pizza;
 import com.matteoveroni.awesomepizza.model.PizzaName;
+import com.matteoveroni.awesomepizza.model.dto.OrderDTO;
 import com.matteoveroni.awesomepizza.repositories.OrdersRepository;
 import com.matteoveroni.awesomepizza.services.OrdersService;
 import java.util.Date;
@@ -78,13 +79,19 @@ public class LoadData {
             Optional<Order> nextOrderToProcess = ordersRepository.findNextOrderToProcess();
             nextOrderToProcess.ifPresent(order -> log.info("order id: {}, date: {}", order.getId(), order.getDate()));
 
+
+            Optional<OrderDTO> nextOrderToPrepare = ordersService.getNextOrderToPrepare();
+            log.info("nextOrderToPrepare: {}", nextOrderToPrepare);
+
+
+            List<Order> all = ordersRepository.findAll();
 //
 //
 //            List<Order> all = ordersRepository.findAll();
 //
 //
 //
-//            log.info("all => " + all);
+            log.info("all => " + all);
 
 //            log.info("Preloading " + ordersRepository.save(new Employee("Bilbo Baggins", "burglar")));
 //            log.info("Preloading " + ordersRepository.save(new Employee("Frodo Baggins", "thief")));

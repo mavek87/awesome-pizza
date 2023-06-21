@@ -2,7 +2,10 @@ package com.matteoveroni.awesomepizza.services;
 
 import com.matteoveroni.awesomepizza.model.Order;
 import com.matteoveroni.awesomepizza.model.OrderState;
+import com.matteoveroni.awesomepizza.model.adapters.OrderAdapter;
+import com.matteoveroni.awesomepizza.model.dto.OrderDTO;
 import com.matteoveroni.awesomepizza.repositories.OrdersRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -10,20 +13,20 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class OrdersService {
 
     private final OrdersRepository ordersRepository;
-
-    public OrdersService(OrdersRepository ordersRepository) {
-        this.ordersRepository = ordersRepository;
-    }
+    private final OrderAdapter orderAdapter;
 
     public List<Order> getAllOrders() {
         return ordersRepository.findAll();
     }
 
-    public Optional<Order> getOrder(Long id) {
-        return ordersRepository.findById(id);
+    public Optional<OrderDTO> getOrder(Long id) {
+        return ordersRepository
+                .findById(id)
+                .map(orderAdapter::adapt);
     }
 
     public Long registerNewOrder(Order order) {
@@ -34,18 +37,18 @@ public class OrdersService {
         return registeredOrder.getId();
     }
 
-    public Optional<Order> getNextOrderToPrepare() {
+    public Optional<OrderDTO> getNextOrderToPrepare() {
         Optional<Order> nextOrderToProcess = ordersRepository.findNextOrderToProcess();
         nextOrderToProcess.ifPresent(order -> {
             order.setOrderState(OrderState.IN_PREPARATION);
             ordersRepository.save(order);
         });
-        return nextOrderToProcess;
+        return nextOrderToProcess.map(orderAdapter::adapt);
     }
 
-    public Optional<Order> evadeOrder(Long orderId) {
+    public Optional<OrderDTO> evadeOrder(Long orderId) {
         Optional<Order> orderToEvade = ordersRepository.findById(orderId);
         orderToEvade.ifPresent(order -> order.setOrderState(OrderState.READY));
-        return orderToEvade;
+        return orderToEvade.map(orderAdapter::adapt);
     }
 }

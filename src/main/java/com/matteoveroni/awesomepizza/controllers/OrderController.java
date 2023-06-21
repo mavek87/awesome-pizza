@@ -1,6 +1,7 @@
 package com.matteoveroni.awesomepizza.controllers;
 
 import com.matteoveroni.awesomepizza.model.Order;
+import com.matteoveroni.awesomepizza.model.dto.OrderDTO;
 import com.matteoveroni.awesomepizza.services.OrdersService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +27,7 @@ public class OrderController {
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public ResponseEntity<Order> getOrder(@PathVariable Long id) {
+    public ResponseEntity<OrderDTO> getOrder(@PathVariable Long id) {
         return ResponseEntity.of(ordersService.getOrder(id));
     }
 }
