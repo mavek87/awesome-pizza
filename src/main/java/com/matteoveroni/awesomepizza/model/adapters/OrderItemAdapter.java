@@ -13,12 +13,12 @@ public class OrderItemAdapter {
     private final PizzaAdapter pizzaAdapter;
 
     public OrderItemDTO adaptToDTO(OrderItem orderItem) {
-        Objects.requireNonNull(orderItem);
+        Objects.requireNonNull(orderItem, "OrderItem is null!");
         return new OrderItemDTO(orderItem.getId(), pizzaAdapter.adaptToDTO(orderItem.getPizza()), orderItem.getAmountOfPizza());
     }
 
     public OrderItem adaptFromDTO(OrderItemDTO orderItemDTO) {
-        Objects.requireNonNull(orderItemDTO);
+        Objects.requireNonNull(orderItemDTO, "OrderItemDTO is null!");
         return new OrderItem(orderItemDTO.id(), pizzaAdapter.adaptFromDTO(orderItemDTO.pizza()), orderItemDTO.amountOfPizza());
     }
 }

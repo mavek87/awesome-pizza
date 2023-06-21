@@ -14,12 +14,12 @@ public class PizzaAdapter {
     private final PizzaCatalogService pizzaCatalogService;
 
     public PizzaDTO adaptToDTO(Pizza pizza) {
-        Objects.requireNonNull(pizza);
+        Objects.requireNonNull(pizza, "Pizza is null!");
         return new PizzaDTO(pizza.getId(), pizza.getName(), pizza.getDescription(), pizza.getPrice());
     }
 
     public Pizza adaptFromDTO(PizzaDTO pizzaDTO) {
-        Objects.requireNonNull(pizzaDTO);
+        Objects.requireNonNull(pizzaDTO, "PizzaDTO is null!");
         return pizzaCatalogService.getPizza(pizzaDTO.name()) ;
     }
 }

@@ -16,16 +16,16 @@ public class OrderAdapter {
     private final OrderItemAdapter orderItemAdapter;
 
     public OrderDTO adaptToDTO(Order order) {
-        Objects.requireNonNull(order);
-        List<OrderItemDTO> orderItemDTOList = order.getOrderItems().stream()
+        List<OrderItemDTO> orderItemDTOList = Objects.requireNonNull(order, "Order is null!")
+                .getOrderItems().stream()
                 .map(orderItemAdapter::adaptToDTO)
                 .toList();
         return new OrderDTO(order.getId(), orderItemDTOList, order.getOrderState(), order.getDate(), order.getNotes());
     }
 
     public Order adaptFromDTO(OrderDTO orderDTO) {
-        Objects.requireNonNull(orderDTO);
-        List<OrderItem> orderItemList = orderDTO.orderItems().stream()
+        List<OrderItem> orderItemList = Objects.requireNonNull(orderDTO, "OrderDTO is null!")
+                .orderItems().stream()
                 .map(orderItemAdapter::adaptFromDTO)
                 .toList();
         return new Order(orderDTO.id(), orderItemList, orderDTO.orderState(), orderDTO.date(), orderDTO.notes());

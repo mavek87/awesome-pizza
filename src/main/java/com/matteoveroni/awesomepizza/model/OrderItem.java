@@ -30,7 +30,7 @@ public class OrderItem {
     @Column(name = "id")
     private Long id;
 //    @ManyToOne(cascade = {CascadeType.PERSIST})
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH})
     @JoinColumn(name = "pizza_id", referencedColumnName = "id")
     private Pizza pizza;
     @Builder.Default

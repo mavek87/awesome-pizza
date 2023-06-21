@@ -34,12 +34,12 @@ public class PizzaCatalogService {
     }
 
     public Pizza getPizza(PizzaName pizzaName) {
-        Objects.requireNonNull(pizzaName);
+        Objects.requireNonNull(pizzaName, "PizzaName is null!");
         return pizzaCatalog.get(pizzaName);
     }
 
     public Pizza getPizza(String pizzaName) {
-        Objects.requireNonNull(pizzaName);
+        Objects.requireNonNull(pizzaName, "PizzaName is null!");
         pizzaName = pizzaName.trim().toUpperCase();
         return pizzaCatalog.get(PizzaName.valueOf(pizzaName));
     }

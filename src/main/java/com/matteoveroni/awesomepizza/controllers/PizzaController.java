@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/pizza_catalog")
+@RequestMapping(value = "/api/pizza_catalog")
 @AllArgsConstructor
 @Slf4j
 public class PizzaController {
 
     private final PizzaCatalogService pizzaCatalogService;
 
-    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping(value = "", produces = {MediaType.APPLICATION_JSON_VALUE})
     public List<PizzaDTO> getPizzaCatalog() {
         return pizzaCatalogService.getPizzaCatalog();
     }
