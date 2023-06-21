@@ -1,7 +1,7 @@
 package com.matteoveroni.awesomepizza.factories;
 
 import com.matteoveroni.awesomepizza.model.Pizza;
-import com.matteoveroni.awesomepizza.model.PizzaName;
+import com.matteoveroni.awesomepizza.model.enums.PizzaName;
 import java.math.BigDecimal;
 import java.util.Objects;
 import lombok.NoArgsConstructor;

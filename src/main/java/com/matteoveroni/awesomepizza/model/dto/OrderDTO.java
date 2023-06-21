@@ -1,7 +1,7 @@
 package com.matteoveroni.awesomepizza.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.matteoveroni.awesomepizza.model.OrderState;
+import com.matteoveroni.awesomepizza.model.enums.OrderState;
 import java.util.Date;
 import java.util.List;
 

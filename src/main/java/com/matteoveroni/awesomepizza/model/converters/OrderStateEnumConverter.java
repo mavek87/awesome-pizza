@@ -1,6 +1,6 @@
 package com.matteoveroni.awesomepizza.model.converters;
 
-import com.matteoveroni.awesomepizza.model.OrderState;
+import com.matteoveroni.awesomepizza.model.enums.OrderState;
 import jakarta.persistence.AttributeConverter;
 
 public class OrderStateEnumConverter implements AttributeConverter<OrderState, Integer> {

@@ -1,4 +1,4 @@
-package com.matteoveroni.awesomepizza.model;
+package com.matteoveroni.awesomepizza.model.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
