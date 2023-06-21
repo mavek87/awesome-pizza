@@ -1,10 +1,11 @@
 package com.matteoveroni.awesomepizza.model.adapters;
 
 import com.matteoveroni.awesomepizza.model.Order;
+import com.matteoveroni.awesomepizza.model.OrderItem;
 import com.matteoveroni.awesomepizza.model.dto.OrderDTO;
 import com.matteoveroni.awesomepizza.model.dto.OrderItemDTO;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -14,10 +15,19 @@ public class OrderAdapter {
 
     private final OrderItemAdapter orderItemAdapter;
 
-    public OrderDTO adapt(Order order) {
+    public OrderDTO adaptToDTO(Order order) {
+        Objects.requireNonNull(order);
         List<OrderItemDTO> orderItemDTOList = order.getOrderItems().stream()
-                .map(orderItemAdapter::adapt)
-                .collect(Collectors.toList());
+                .map(orderItemAdapter::adaptToDTO)
+                .toList();
         return new OrderDTO(order.getId(), orderItemDTOList, order.getOrderState(), order.getDate(), order.getNotes());
+    }
+
+    public Order adaptFromDTO(OrderDTO orderDTO) {
+        Objects.requireNonNull(orderDTO);
+        List<OrderItem> orderItemList = orderDTO.orderItems().stream()
+                .map(orderItemAdapter::adaptFromDTO)
+                .toList();
+        return new Order(orderDTO.id(), orderItemList, orderDTO.orderState(), orderDTO.date(), orderDTO.notes());
     }
 }

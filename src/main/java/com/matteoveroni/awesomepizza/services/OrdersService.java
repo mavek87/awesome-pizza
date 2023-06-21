@@ -21,14 +21,14 @@ public class OrdersService {
 
     public List<OrderDTO> getAllOrders() {
         return ordersRepository.findAll().stream()
-                .map(orderAdapter::adapt)
+                .map(orderAdapter::adaptToDTO)
                 .collect(Collectors.toList());
     }
 
     public Optional<OrderDTO> getOrder(Long id) {
         return ordersRepository
                 .findById(id)
-                .map(orderAdapter::adapt);
+                .map(orderAdapter::adaptToDTO);
     }
 
     public Long registerNewOrder(Order order) {
@@ -45,12 +45,12 @@ public class OrdersService {
             order.setOrderState(OrderState.IN_PREPARATION);
             ordersRepository.save(order);
         });
-        return nextOrderToProcess.map(orderAdapter::adapt);
+        return nextOrderToProcess.map(orderAdapter::adaptToDTO);
     }
 
     public Optional<OrderDTO> evadeOrder(Long orderId) {
         Optional<Order> orderToEvade = ordersRepository.findById(orderId);
         orderToEvade.ifPresent(order -> order.setOrderState(OrderState.READY));
-        return orderToEvade.map(orderAdapter::adapt);
+        return orderToEvade.map(orderAdapter::adaptToDTO);
     }
 }
