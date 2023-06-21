@@ -23,15 +23,6 @@ public class LoadData {
 
     private static final Logger log = LoggerFactory.getLogger(LoadData.class);
 
-//    public static SessionFactory getCurrentSessionFromJPA() {
-//        // JPA and Hibernate SessionFactory example
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
-//        EntityManager entityManager = emf.createEntityManager();
-//        // Get the Hibernate Session from the EntityManager in JPA
-//        Session session = entityManager.unwrap(org.hibernate.Session.class);
-//        return session.getSessionFactory();
-//    }
-
     @Bean
     CommandLineRunner initDatabase(OrdersRepository ordersRepository, OrdersService ordersService) {
 
