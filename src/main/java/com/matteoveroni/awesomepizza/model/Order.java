@@ -35,11 +35,10 @@ public class Order {
     private Long id;
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "order_items",
+            name = "orders_items",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "order_item_id")
     )
-//    @JsonIgnore
     private List<OrderItem> orderItems;
     @Column(name = "order_state")
     @Convert(converter = OrderStateEnumConverter.class)
