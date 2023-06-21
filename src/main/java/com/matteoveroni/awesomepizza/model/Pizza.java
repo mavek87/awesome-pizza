@@ -1,5 +1,6 @@
 package com.matteoveroni.awesomepizza.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -33,5 +34,6 @@ public class Pizza {
     @Builder.Default private String description = "";
     @Builder.Default private BigDecimal price = new BigDecimal("0.0");
     @OneToMany(mappedBy = "pizza")
+    @JsonIgnore
     private List<OrderItem> orderItems;
 }

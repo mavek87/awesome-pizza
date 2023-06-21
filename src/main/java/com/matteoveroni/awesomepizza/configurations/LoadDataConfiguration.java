@@ -1,5 +1,6 @@
 package com.matteoveroni.awesomepizza.configurations;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.matteoveroni.awesomepizza.factories.PizzaFactory;
 import com.matteoveroni.awesomepizza.model.Order;
 import com.matteoveroni.awesomepizza.model.OrderItem;
@@ -86,6 +87,11 @@ public class LoadDataConfiguration {
 
             List<OrderDTO> allOrders = ordersService.getAllOrders();
             log.info("allOrders => " + allOrders);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            String s = objectMapper.writeValueAsString(allOrders);
+
+            log.info("s: {}", s);
 
 //            log.info("Preloading " + ordersRepository.save(new Employee("Bilbo Baggins", "burglar")));
 //            log.info("Preloading " + ordersRepository.save(new Employee("Frodo Baggins", "thief")));
