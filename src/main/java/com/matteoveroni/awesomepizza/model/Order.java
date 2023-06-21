@@ -44,7 +44,8 @@ public class Order {
     @Column(name = "order_state")
     @Convert(converter = OrderStateEnumConverter.class)
     private OrderState orderState;
-    private Date date;
+    @Builder.Default
+    private Date date = new Date();
     @Builder.Default
     private String notes = "";
 }

@@ -29,7 +29,8 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-    @ManyToOne(cascade = {CascadeType.ALL})
+//    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @ManyToOne
     @JoinColumn(name = "pizza_id", referencedColumnName = "id")
     private Pizza pizza;
     @Builder.Default

@@ -2,12 +2,16 @@ package com.matteoveroni.awesomepizza.model.adapters;
 
 import com.matteoveroni.awesomepizza.model.Pizza;
 import com.matteoveroni.awesomepizza.model.dto.PizzaDTO;
-import java.util.ArrayList;
+import com.matteoveroni.awesomepizza.services.PizzaCatalogService;
 import java.util.Objects;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@AllArgsConstructor
 public class PizzaAdapter {
+
+    private final PizzaCatalogService pizzaCatalogService;
 
     public PizzaDTO adaptToDTO(Pizza pizza) {
         Objects.requireNonNull(pizza);
@@ -16,6 +20,6 @@ public class PizzaAdapter {
 
     public Pizza adaptFromDTO(PizzaDTO pizzaDTO) {
         Objects.requireNonNull(pizzaDTO);
-        return new Pizza(pizzaDTO.id(), pizzaDTO.name(), pizzaDTO.description(), pizzaDTO.price(), new ArrayList<>());
+        return pizzaCatalogService.getPizza(pizzaDTO.name()) ;
     }
 }

@@ -28,8 +28,8 @@ public class OrderController {
     private final OrdersService ordersService;
     private final OrderAdapter orderAdapter;
 
-    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<OrderDTO> getOrder() {
+    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public List<OrderDTO> getOrders() {
         return ordersService.getAllOrders();
     }
 
@@ -39,7 +39,6 @@ public class OrderController {
     }
 
     @PostMapping(
-//            value = "/x",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
