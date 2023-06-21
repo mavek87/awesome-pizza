@@ -25,7 +25,6 @@ import lombok.ToString;
 @Setter
 @Builder
 @ToString
-@Transactional
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

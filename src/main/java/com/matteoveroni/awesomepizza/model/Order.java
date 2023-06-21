@@ -30,7 +30,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @Builder
-@ToString
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

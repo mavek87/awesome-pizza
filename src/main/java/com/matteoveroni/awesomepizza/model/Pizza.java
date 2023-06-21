@@ -24,7 +24,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @Builder
-@ToString
 public class Pizza {
 
     @Id
