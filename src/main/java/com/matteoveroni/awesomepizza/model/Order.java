@@ -1,5 +1,6 @@
 package com.matteoveroni.awesomepizza.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.matteoveroni.awesomepizza.model.converters.OrderStateEnumConverter;
 import jakarta.persistence.*;
@@ -32,7 +33,8 @@ public class Order {
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "order_item_id")
     )
-    @JsonIgnore
+//    @JsonIgnore
+//    @JsonBackReference
     private List<OrderItem> orderItems;
     @Column(name = "order_state")
     @Convert(converter = OrderStateEnumConverter.class)

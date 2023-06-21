@@ -2,7 +2,6 @@ package com.matteoveroni.awesomepizza.controllers;
 
 import com.matteoveroni.awesomepizza.model.Order;
 import com.matteoveroni.awesomepizza.services.OrdersService;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

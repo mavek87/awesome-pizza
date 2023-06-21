@@ -1,5 +1,6 @@
 package com.matteoveroni.awesomepizza.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,6 +37,7 @@ public class OrderItem {
     //    @ManyToOne
 //    @JoinColumn(name = "order_id", referencedColumnName = "id")
 //    @JoinColumn(name = "order_id", referencedColumnName = "id", nullable = false)
+//    @JsonManagedReference
 //    private Order order;
     @Builder.Default
     private Integer amountOfPizza = 0;
