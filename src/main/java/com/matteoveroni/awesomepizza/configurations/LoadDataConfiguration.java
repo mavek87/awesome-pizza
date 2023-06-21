@@ -84,6 +84,9 @@ public class LoadDataConfiguration {
 //
             log.info("all => " + all);
 
+            List<OrderDTO> allOrders = ordersService.getAllOrders();
+            log.info("allOrders => " + allOrders);
+
 //            log.info("Preloading " + ordersRepository.save(new Employee("Bilbo Baggins", "burglar")));
 //            log.info("Preloading " + ordersRepository.save(new Employee("Frodo Baggins", "thief")));
 

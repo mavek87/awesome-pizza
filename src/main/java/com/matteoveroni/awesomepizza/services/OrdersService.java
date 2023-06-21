@@ -5,6 +5,7 @@ import com.matteoveroni.awesomepizza.model.OrderState;
 import com.matteoveroni.awesomepizza.model.adapters.OrderAdapter;
 import com.matteoveroni.awesomepizza.model.dto.OrderDTO;
 import com.matteoveroni.awesomepizza.repositories.OrdersRepository;
+import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +20,10 @@ public class OrdersService {
     private final OrdersRepository ordersRepository;
     private final OrderAdapter orderAdapter;
 
-    public List<Order> getAllOrders() {
-        return ordersRepository.findAll();
+    public List<OrderDTO> getAllOrders() {
+        return ordersRepository.findAll().stream()
+                .map(orderAdapter::adapt)
+                .collect(Collectors.toList());
     }
 
     public Optional<OrderDTO> getOrder(Long id) {

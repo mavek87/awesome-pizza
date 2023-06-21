@@ -22,7 +22,7 @@ public class OrderController {
     }
 
     @GetMapping(value = "/", produces = "application/json")
-    public List<Order> getOrder() {
+    public List<OrderDTO> getOrder() {
         return ordersService.getAllOrders();
     }
 
