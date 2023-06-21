@@ -1,4 +1,4 @@
-package com.matteoveroni.awesomepizza;
+package com.matteoveroni.awesomepizza.config;
 
 import com.matteoveroni.awesomepizza.factories.PizzaFactory;
 import com.matteoveroni.awesomepizza.model.Order;
@@ -19,9 +19,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class LoadData {
+public class LoadDataConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(LoadData.class);
+    private static final Logger log = LoggerFactory.getLogger(LoadDataConfiguration.class);
 
     @Bean
     CommandLineRunner initDatabase(OrdersRepository ordersRepository, OrdersService ordersService) {
@@ -33,7 +33,7 @@ public class LoadData {
 
             OrderItem item1Order1 = OrderItem.builder()
                     .pizza(pizzaMargherita)
-                    .amountOfPizza(3)
+                    .amountOfPizza(1)
                     .build();
 
             OrderItem item2Order1 = OrderItem.builder()
