@@ -1,6 +1,5 @@
 package com.matteoveroni.awesomepizza.controllers;
 
-import com.matteoveroni.awesomepizza.model.Order;
 import com.matteoveroni.awesomepizza.model.dto.OrderDTO;
 import com.matteoveroni.awesomepizza.services.OrdersService;
 import java.util.List;
@@ -30,15 +29,15 @@ public class OrderController {
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OrderDTO> getOrder(@PathVariable Long id) {
-//        ordersService.registerNewOrder()
         return ResponseEntity.of(ordersService.getOrder(id));
     }
 
-//    @PostMapping(
-//            value = "/register_order",
-//            consumes = MediaType.APPLICATION_JSON_VALUE
-//    )
-//    public void Long registerNewOrder(@RequestBody Order orderDTO) {
-//        return 1L;
-//    }
+    @PostMapping(
+            value = "/",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
+    )
+    public Long registerNewOrder(@RequestBody OrderDTO order) {
+        return 1L;
+    }
 }
