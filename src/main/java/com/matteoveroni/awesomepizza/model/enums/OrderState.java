@@ -22,8 +22,8 @@ public enum OrderState {
 
     private final Integer code;
 
-    public static OrderState forValue(int code) {
-        if (typesByCode.containsKey(code)) {
+    public static OrderState forValue(Integer code) {
+        if (code != null && typesByCode.containsKey(code)) {
             return typesByCode.get(code);
         } else {
             throw new IllegalArgumentException("Unknown orderState code: " + code);
