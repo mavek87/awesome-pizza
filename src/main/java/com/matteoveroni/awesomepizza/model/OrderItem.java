@@ -34,9 +34,10 @@ public class OrderItem {
     @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "pizza_id", referencedColumnName = "id")
     private Pizza pizza;
-//    @ManyToOne
+    //    @ManyToOne
 //    @JoinColumn(name = "order_id", referencedColumnName = "id")
 //    @JoinColumn(name = "order_id", referencedColumnName = "id", nullable = false)
 //    private Order order;
+    @Builder.Default
     private Integer amountOfPizza = 0;
 }

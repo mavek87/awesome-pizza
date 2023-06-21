@@ -12,8 +12,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
 import java.util.Date;
 import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,14 +38,15 @@ public class Order {
     private Long id;
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinTable(
-            name="order_items",
-            joinColumns = @JoinColumn( name="order_id"),
-            inverseJoinColumns = @JoinColumn( name="order_item_id")
+            name = "order_items",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "order_item_id")
     )
     private List<OrderItem> orderItems;
-    @Column(name="order_state")
+    @Column(name = "order_state")
     @Convert(converter = OrderStateEnumConverter.class)
     private OrderState orderState;
-    private Date date = new Date();
+    private Date date;
+    @Builder.Default
     private String notes = "";
 }
