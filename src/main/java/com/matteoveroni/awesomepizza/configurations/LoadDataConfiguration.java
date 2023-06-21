@@ -1,4 +1,4 @@
-package com.matteoveroni.awesomepizza.config;
+package com.matteoveroni.awesomepizza.configurations;
 
 import com.matteoveroni.awesomepizza.factories.PizzaFactory;
 import com.matteoveroni.awesomepizza.model.Order;
