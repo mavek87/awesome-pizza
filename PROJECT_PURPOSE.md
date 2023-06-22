@@ -4,4 +4,4 @@ Come team, procediamo allo sviluppo per iterazioni. Decidiamo che nella prima it
 
 Decidiamo di progettare anche i test di unità sul codice oggetto di sviluppo.
 
-Opzionale: predisponiamo una integrazione con un SSO
+Opzionale: predisponiamo una integrazione con un SSO.
