@@ -1,9 +1,9 @@
 package com.matteoveroni.awesomepizza.services;
 
 import com.matteoveroni.awesomepizza.model.Order;
-import com.matteoveroni.awesomepizza.model.enums.OrderState;
 import com.matteoveroni.awesomepizza.model.adapters.OrderAdapter;
 import com.matteoveroni.awesomepizza.model.dto.OrderDTO;
+import com.matteoveroni.awesomepizza.model.enums.OrderState;
 import com.matteoveroni.awesomepizza.repositories.OrdersRepository;
 import java.util.Date;
 import java.util.List;

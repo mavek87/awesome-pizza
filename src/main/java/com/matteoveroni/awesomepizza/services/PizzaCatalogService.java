@@ -2,7 +2,6 @@ package com.matteoveroni.awesomepizza.services;
 
 import com.matteoveroni.awesomepizza.factories.PizzaFactory;
 import com.matteoveroni.awesomepizza.model.Pizza;
-import com.matteoveroni.awesomepizza.model.adapters.PizzaAdapter;
 import com.matteoveroni.awesomepizza.model.dto.PizzaDTO;
 import com.matteoveroni.awesomepizza.model.enums.PizzaName;
 import com.matteoveroni.awesomepizza.repositories.PizzaRepository;
