@@ -43,7 +43,7 @@ public class PizzaCatalogService {
         return pizzaCatalog.get(PizzaName.valueOf(pizzaName));
     }
 
-    public PizzaDTO adaptToDTO(Pizza pizza) {
+    private PizzaDTO adaptToDTO(Pizza pizza) {
         return new PizzaDTO(pizza.getId(), pizza.getName(), pizza.getDescription(), pizza.getPrice());
     }
 }
