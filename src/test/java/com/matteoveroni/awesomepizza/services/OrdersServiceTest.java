@@ -84,11 +84,11 @@ class OrdersServiceTest {
         when(ordersRepository.findById(id)).thenReturn(Optional.of(order1));
         when(orderAdapter.adaptToDTO(order1)).thenReturn(order1DTO);
 
-        Optional<OrderDTO> order = ordersService.getOrder(id);
+        OrderDTO order = ordersService.getOrder(id).orElseThrow(() -> new IllegalStateException("Error, an order dto was expected"));
 
         verify(ordersRepository, times(1)).findById(id);
         verify(orderAdapter, times(1)).adaptToDTO(order1);
-        assertEquals(order1DTO, order.get(), "Error, the order is not the one expected!");
+        assertEquals(order1DTO, order, "Error, the order is not the one expected!");
     }
 
     @Test
@@ -100,9 +100,9 @@ class OrdersServiceTest {
                 .build();
         when(ordersRepository.findById(id)).thenReturn(Optional.of(order));
 
-        Optional<OrderState> optOrderState = ordersService.getOrderState(id);
+        OrderState orderState = ordersService.getOrderState(id).orElseThrow(() -> new IllegalStateException("Error, an order state was expected"));
 
-        assertEquals(order.getOrderState(), optOrderState.get(), "Error, the state is different from the expectations!");
+        assertEquals(order.getOrderState(), orderState, "Error, the state is different from the expectations!");
     }
 
     @Test
@@ -124,11 +124,11 @@ class OrdersServiceTest {
         when(ordersRepository.findNextOrderToProcess()).thenReturn(Optional.of(order1));
         when(orderAdapter.adaptToDTO(order1)).thenReturn(order1DTO);
 
-        Optional<OrderDTO> nextOrderToPrepare = ordersService.getNextOrderToPrepare();
+        OrderDTO nextOrderToPrepare = ordersService.getNextOrderToPrepare().orElseThrow(() -> new IllegalStateException("Error, a next order to prepare was expected"));
 
         verify(ordersRepository, times(1)).findNextOrderToProcess();
         verify(ordersRepository, times(1)).save(order1);
-        assertEquals(order1DTO, nextOrderToPrepare.get(), "Error, the next order to prepare is different from expectations");
+        assertEquals(order1DTO, nextOrderToPrepare, "Error, the next order to prepare is different from expectations");
     }
 
     @Test
@@ -148,9 +148,8 @@ class OrdersServiceTest {
         when(ordersRepository.findById(id)).thenReturn(Optional.of(order1));
         when(orderAdapter.adaptToDTO(order1)).thenAnswer(answer -> new OrderDTO(order1DTO.id(), null, OrderState.READY, null, null));
 
-        Optional<OrderDTO> optionalOrder = ordersService.completeOrder(id);
+        OrderDTO orderDTO = ordersService.completeOrder(id).orElseThrow(() -> new IllegalStateException("Error, an order dto was expected"));
 
-        final OrderDTO orderDTO = optionalOrder.get();
         assertEquals(order1DTO.id(), orderDTO.id(), "Error, order id is different from expectations");
         assertEquals(OrderState.READY, orderDTO.orderState(), "Error, order state is different from expectations");
     }

@@ -1,17 +1,8 @@
 package com.matteoveroni.awesomepizza.configurations;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.matteoveroni.awesomepizza.model.Order;
-import com.matteoveroni.awesomepizza.model.OrderItem;
-import com.matteoveroni.awesomepizza.model.dto.OrderDTO;
-import com.matteoveroni.awesomepizza.model.enums.OrderState;
-import com.matteoveroni.awesomepizza.model.enums.PizzaName;
 import com.matteoveroni.awesomepizza.repositories.OrdersRepository;
 import com.matteoveroni.awesomepizza.services.OrdersService;
 import com.matteoveroni.awesomepizza.services.PizzaCatalogService;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
