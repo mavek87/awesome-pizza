@@ -1,4 +1,4 @@
-package com.matteoveroni.awesomepizza.configurations;
+package com.matteoveroni.awesomepizza.config;
 
 import java.util.List;
 import org.springframework.context.annotation.Configuration;

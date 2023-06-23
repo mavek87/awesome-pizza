@@ -1,18 +1,16 @@
-package com.matteoveroni.awesomepizza.configurations;
+package com.matteoveroni.awesomepizza.config;
 
 import com.matteoveroni.awesomepizza.repositories.OrdersRepository;
 import com.matteoveroni.awesomepizza.services.OrdersService;
 import com.matteoveroni.awesomepizza.services.PizzaCatalogService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@Slf4j
 public class LoadDataConfiguration {
-
-    private static final Logger log = LoggerFactory.getLogger(LoadDataConfiguration.class);
 
     @Bean
     CommandLineRunner initDatabase(OrdersRepository ordersRepository, OrdersService ordersService, PizzaCatalogService pizzaService) {
