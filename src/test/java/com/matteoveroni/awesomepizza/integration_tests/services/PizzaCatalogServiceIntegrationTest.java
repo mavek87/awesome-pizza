@@ -1,4 +1,4 @@
-package com.matteoveroni.awesomepizza.integration_tests;
+package com.matteoveroni.awesomepizza.integration_tests.services;
 
 import com.matteoveroni.awesomepizza.model.Pizza;
 import com.matteoveroni.awesomepizza.model.dto.PizzaDTO;

@@ -1,4 +1,4 @@
-package com.matteoveroni.awesomepizza.integration_tests;
+package com.matteoveroni.awesomepizza.integration_tests.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.matteoveroni.awesomepizza.model.Order;

@@ -1,4 +1,4 @@
-package com.matteoveroni.awesomepizza.integration_tests;
+package com.matteoveroni.awesomepizza.integration_tests.services;
 
 import com.matteoveroni.awesomepizza.model.Order;
 import com.matteoveroni.awesomepizza.model.adapters.OrderAdapter;
